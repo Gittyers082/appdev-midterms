@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ant build file for the JUnit practice project.
+  Usage:  ant            runs the DEFAULT target (test)
+          ant <target>   runs a specific target, e.g. ant clean, ant jar
+          ant -p         lists every target that has a description
+-->
+<project name="appdev-midterms" default="test" basedir=".">
+
+    <description>ITCS 311 midterm practice - compile, test, package, document</description>
+
+    <!-- ===== PROPERTIES (key-value pairs, used as ${name}) ===== -->
+
+    <!-- 1. Load the external property file first -->
+    <property file="build.properties"/>
+
+    <!-- 2. Fallback values. Ant properties are IMMUTABLE: once set they can't be
+            changed, so these only apply if build.properties didn't set them already. -->
+    <property name="src.dir"          location="src"/>
+    <property name="test.dir"         location="test"/>
+    <property name="lib.dir"          location="lib"/>
+    <property name="build.dir"        location="build"/>
+    <property name="classes.dir"      location="${build.dir}/classes"/>
+    <property name="test.classes.dir" location="${build.dir}/test-classes"/>
+    <property name="dist.dir"         location="dist"/>
+    <property name="doc.dir"          location="doc"/>
+    <property name="junit.jar"        location="${lib.dir}/junit-console.jar"/>
+    <property name="jar.name"         value="appdev.jar"/>
+
+    <!-- ===== CLASSPATHS (reusable lists of folders/jars) ===== -->
+
+    <!-- for compiling tests: they need JUnit + the main classes -->
+    <path id="test.compile.classpath">
+        <pathelement location="${junit.jar}"/>
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <!-- for running tests: the main classes + the compiled tests -->
+    <path id="test.run.classpath">
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${test.classes.dir}"/>
+    </path>
+
+    <!-- ===== TARGETS (each one is a step in the build) ===== -->
+
+    <target name="clean" description="Delete all generated folders">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+
+    <target name="init" description="Create output folders">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile src into build/classes">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+    </target>
+
+    <target name="compile-tests" depends="compile" description="Compile test into build/test-classes">
+        <javac srcdir="${test.dir}" destdir="${test.classes.dir}" includeantruntime="false">
+            <classpath refid="test.compile.classpath"/>
+        </javac>
+    </target>
+
+    <!-- Runs the same JUnit console launcher you ran by hand, through Ant's java task.
+         failonerror="true" makes the whole build FAIL if any test fails. -->
+    <target name="test" depends="compile-tests" description="Run all JUnit tests">
+        <java jar="${junit.jar}" fork="true" failonerror="true">
+            <arg value="execute"/>
+            <arg value="--disable-banner"/>
+            <arg value="--class-path"/>
+            <arg pathref="test.run.classpath"/>
+            <arg value="--scan-class-path"/>
+        </java>
+    </target>
+
+    <target name="jar" depends="compile" description="Package the main classes into dist/appdev.jar">
+        <jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}"/>
+    </target>
+
+    <target name="javadoc" description="Generate HTML documentation into doc/">
+        <javadoc sourcepath="${src.dir}" destdir="${doc.dir}" packagenames="appdev"
+                 additionalparam="-Xdoclint:none"/>
+    </target>
+
+    <!-- depends takes ONE comma-separated string (the module slide shows it wrong) -->
+    <target name="all" depends="clean,test,jar,javadoc" description="Clean, test, package and document"/>
+
+</project>
