@@ -1,0 +1,7 @@
+Download the JUnit 6 console launcher jar and save it in this folder as:
+
+    junit-console.jar
+
+Where: https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/
+Open the newest 6.x.x folder and download junit-platform-console-standalone-6.x.x.jar
+(NOT the -sources or -javadoc one). Then rename it to junit-console.jar.
