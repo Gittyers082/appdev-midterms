@@ -1,0 +1,11 @@
+<snippet>
+    <!-- SNIPPET WITHOUT TAB TRIGGER: select some code, then Ctrl+Shift+P and type "Snippet: Wrap in try-catch"
+         (or Tools > Snippets...). $SELECTION is replaced by the text you had selected. -->
+    <content><![CDATA[try {
+    ${SELECTION}
+} catch (${1:Exception} e) {
+    ${2:e.printStackTrace();}
+}$0]]></content>
+    <scope>source.java</scope>
+    <description>Wrap in try-catch</description>
+</snippet>

@@ -1,0 +1,46 @@
+MACRO PRACTICE  (Notepad++)
+===========================
+A macro RECORDS your keystrokes, then REPLAYS them.
+  Macro > Start Recording   (Ctrl+Shift+R)
+  Macro > Stop Recording    (Ctrl+Shift+R again)
+  Macro > Playback          (Ctrl+Shift+P)         = replay once
+  Macro > Run a Macro Multiple Times...            = replay N times, or "until end of file"
+  Macro > Save Current Recorded Macro...           = give it a name + shortcut so you can reuse it
+Golden rule: record using KEYS (Home, End, arrow keys), not the mouse - mouse clicks aren't recorded.
+Finish each recording on the NEXT line, so the replay continues from there.
+
+
+--- M1. Turn each fruit into a Java array entry:   "apple",  ---
+Put the cursor on "apple". Start recording.  Home, type "  End, type ",  press Down.  Stop.
+Then Run a Macro Multiple Times > until end of file?  NO - only 4 more times (stop before M2).
+apple
+banana
+mango
+grapes
+papaya
+
+
+--- M2. Comment out EVERY OTHER line (regex can't do this easily - macros can) ---
+Record:  Home, type //  then press Down TWICE.  Stop.  Replay on the rest.
+line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+
+
+--- M3. Turn key=value lines into   map.put("key", "value");  ---
+Record using Home, End, and Ctrl+Right (jump word) / arrow keys. Plan it before recording!
+name=Steven
+course=BSIT
+year=3
+school=SLU
+
+
+--- M4. Compare: do M1 again, but with Notepad++ regex instead ---
+Ctrl+H, Search Mode: Regular expression.   Find: ^(\w+)$     Replace: "\1",
+(Notepad++ uses \1 for groups; $1 also works.)
+kiwi
+melon
+lemon

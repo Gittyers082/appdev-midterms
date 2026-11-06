@@ -1,0 +1,48 @@
+MULTIPLE CURSORS & EDITING SHORTCUTS PRACTICE  (Sublime Text)
+==============================================================
+Save this file as .java (or use View > Syntax > Java) so Ctrl+/ comments work properly.
+
+
+--- C1. Ctrl+D : rename "local" to "total" ONLY where it is the variable ---
+Put the cursor on the first local, press Ctrl+D repeatedly (Ctrl+K, Ctrl+D skips one), then type.
+int local = 0;
+local = local + 5;
+System.out.println("local value: " + local);
+String locallate = "do not rename this one";
+
+
+--- C2. Alt+F3 : select ALL occurrences of "color" at once and change to "color" ---
+color picker, background color, text color, color theme
+
+
+--- C3. Ctrl+Shift+L : turn each word into   private int <word>;  ---
+Select the 4 lines, press Ctrl+Shift+L (one cursor per line), press Home, type, press End, type.
+private int <x>
+private int <y>
+private int <width>
+private int <height>
+
+
+--- C4. Column selection : add "// " in front of these lines with ONE drag ---
+Hold Shift + RIGHT-click drag downward (or middle-click drag), then type.
+//int a = 1;
+//int b = 2;
+//int c = 3;
+
+
+--- C5. Line shortcuts ---
+Ctrl+Shift+Up / Down  : move the line (put these lines in order 1-2-3)
+Ctrl+Shift+D          : duplicate a line
+Ctrl+/                : toggle line comment          Ctrl+Shift+/ : block comment
+Ctrl+L                : select the whole line        Ctrl+Shift+K : delete the line
+// step 1: read input;
+// step 2: compute;
+// step 3: return result;
+
+
+--- C6. Other features to try ---
+Ctrl+P            Goto Anything: type a file name.  Then  @  = jump to symbol,  :  = go to line,  #  = search in file
+Ctrl+Shift+P      Command Palette
+Ctrl+Shift+F      Find in Files (search a whole folder)
+Alt+Shift+2       split the window into 2 columns   (Alt+Shift+1 = back to 1,  Alt+Shift+8 = 2 rows)
+Ctrl+K, Ctrl+B    toggle the sidebar (File management: File > Open Folder to see the project tree)

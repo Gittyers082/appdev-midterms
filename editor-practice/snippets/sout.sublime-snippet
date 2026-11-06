@@ -1,0 +1,9 @@
+<snippet>
+    <!-- EXERCISE: finish this snippet so typing  sout + Tab  gives  System.out.println(|);
+         with the cursor (or placeholder text "message") inside the parentheses.
+         Hint: look at how ${1:...} and $0 are used in java-header.sublime-snippet -->
+    <content><![CDATA[TODO]]></content>
+    <tabTrigger>TODO</tabTrigger>
+    <scope>source.java</scope>
+    <description>System.out.println</description>
+</snippet>

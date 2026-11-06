@@ -1,0 +1,81 @@
+REGEX FIND & REPLACE PRACTICE  (Sublime Text)
+==============================================
+HOW:  Ctrl+H opens Find/Replace. Turn ON the regex button  .*  (or Alt+R).
+      Each task only affects ITS OWN block: select the block's lines first,
+      then turn on "In selection" (the button next to .* , or Alt+S) before Replace All.
+      Undo with Ctrl+Z if it goes wrong. Answers are in ANSWERS.md - try first!
+      In Sublime's Replace box, groups are written $1 $2 ... (\1 \2 also works).
+
+
+--- R1. FIND ONLY: every 4-digit year (use Find All: Alt+Enter) ---
+SLU was founded in 1911, Git in 2005, Java in 1995, and this file in 2026.
+Not years: 12345, 99, A2026B
+
+
+--- R2. Swap "Last, First" into "First Last" ---
+Juan Dela cRuz
+Maria saNtos
+Jose riZal rEyes
+Ana garcIa
+
+
+--- R3. Dates YYYY-MM-DD  ->  MM/DD/YYYY ---
+11-06-2026
+01-31-1998
+04-07-2005
+
+
+--- R4. Phone 09171234567  ->  0917-123-4567 ---
+0917-123-4567
+0928-111-2222
+0999-555-6666
+
+
+--- R5. FIND ONLY: lines that are valid emails (simplified: word chars/dots, @, word chars, dot, word chars) ---
+steven@gmail.com - passed
+not-an-email
+juan.dc@slu.edu - passed
+@missinguser.com
+ana@yahoo
+maria_santos@outlook.com - passed
+
+
+--- R6. Remove trailing spaces/tabs at the end of each line (select the block - they're invisible!) ---
+inta=1;
+intb=2;
+intc=3;
+
+
+--- R7. Collapse 2 or more spaces into ONE space ---
+public static void main(String[] args)
+int total = 0;
+
+
+--- R8. Delete the blank lines ---
+line one
+ line two
+ line three
+ --- R9. CSV rows  ->  SQL INSERT statements ---
+Result should look like:   INSERT INTO students VALUES (101, 'Juan', 'BSIT');
+(101, Juan, BSIT)
+(102, Maria, BSCS)
+(103, Jose, BSIS)
+
+
+--- R10. Replace every System.out.println(...) with logger.info(...) ---
+logger.info(("Starting app"));
+logger.info((user.getName()));
+logger.info(("Total: " + total));
+
+
+--- R11. Strip ALL HTML tags, keep only the text ---
+Hello world
+Ka-dugo
+SLU
+
+
+--- R12. BONUS: generate getters ---
+Result should look like:   public String getName() { return name; }
+public String getName() { return name; )
+public int getAge() { return age; )
+public double getBalance() { return balance; )
